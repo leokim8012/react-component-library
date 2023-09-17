@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.ts', // Entry file which exports all your components
+  entry: './src/index.ts', // This should be your library's entry point
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -19,18 +19,27 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.module\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader?modules&importLoaders',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
           'sass-loader',
         ],
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
+  ],
   externals: {
     react: 'commonjs react',
     'react-dom': 'commonjs react-dom',
   },
-  plugins: [new MiniCssExtractPlugin()],
 };
