@@ -2,14 +2,18 @@
   "compilerOptions": {
     "outDir": "./dist",
     "module": "esnext",
-    "target": "esnext",
+    "target": "es5", // Modified for broader browser support
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["dom", "es6"],
     "declaration": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", ".storybook", "**/*.spec.ts", "src/stories"]
