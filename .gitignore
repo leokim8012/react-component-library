@@ -11,9 +11,6 @@ storybook-static/
 
 *.tsbuildinfo
 
-# SCSS compiled files (if any)
-*.css
-!*.module.css
 
 # IDE - Visual Studio Code
 .vscode/
